@@ -1,8 +1,8 @@
 import { Router } from "express";
-import { getWeather } from "../controllers/weather.controller";
+import { searchLocations } from "../controllers/weather.controller";
 
 const router = Router();
 
-router.get("/", getWeather);
+router.get("/", searchLocations);
 
 export default router;
