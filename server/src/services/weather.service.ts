@@ -7,17 +7,10 @@ export const getGeocoding = async (search: string) => {
     {
       params: {
         q: search,
-        limit: 5,
         appid: env.WEATHER_API_KEY,
       },
     }
   );
 
-  return data.map((location: any) => ({
-    name: location.name,
-    country: location.country,
-    state: location.state,
-    lat: location.lat,
-    lon: location.lon,
-  }));
+  return data
 };
