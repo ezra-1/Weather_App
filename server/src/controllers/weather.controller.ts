@@ -1,23 +1,27 @@
 import { Request, Response } from "express";
-import { getWeatherByCity } from "../services/weather.service";
+import { getGeocoding } from "../services/weather.service";
 
-export const getWeather = async (req: Request, res: Response) => {
+export const searchLocations = async (
+  req: Request,
+  res: Response
+) => {
   try {
-    const city = req.query.city as string;
+    const search = req.query.q as string;
 
-    if (!city) {
-      return res.status(400).json({ error: "City is required" });
+    if (!search) {
+      return res.status(400).json({
+        error: "Search query is required",
+      });
     }
 
-    const data = await getWeatherByCity(city);
+    const locations = await getGeocoding(search);
 
-    res.json({
-      city: data.name,
-      temperature: data.main.temp,
-      humidity: data.main.humidity,
-      description: data.weather[0].description
-    });
+    return res.json(locations);
   } catch (error) {
-    res.status(500).json({ error: "Failed to fetch weather" });
+    console.error(error);
+
+    return res.status(500).json({
+      error: "Failed to fetch locations",
+    });
   }
 };
