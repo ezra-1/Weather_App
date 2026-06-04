@@ -1,5 +1,5 @@
-import { openWeatherApi } from "@/api";
-import { APP, WEATHER_API } from "@/config";
+import { openWeatherApi } from "@/api/weatherApi";
+import { APP, WEATHER_API } from "@/config/config";
 
 import { useEffect, useCallback, useState } from "react";
 import { useWeather } from "@/hooks/useWeather";
@@ -33,7 +33,7 @@ import {
 
 import { MapPinnedIcon, SearchIcon } from "lucide-react";
 
-import type { Geocoding } from "@/types";
+import type { Geocoding } from "@/types/weatherTypes";
 
 import { FavoriteButton } from "@/components/FavoriteButton";
 

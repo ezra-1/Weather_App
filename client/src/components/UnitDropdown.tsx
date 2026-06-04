@@ -1,4 +1,4 @@
-import { APP, WEATHER_API } from '@/config';
+import { APP, WEATHER_API } from '@/config/config';
 
 import { useEffect, useState } from 'react';
 import { useWeather } from '@/hooks/useWeather';
