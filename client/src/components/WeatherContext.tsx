@@ -1,6 +1,6 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
-import type { Geocoding } from '@/types/weatherTypes';
+import type { Geocoding } from "@/types/weatherTypes";
 import type {
   CurrentWeather,
   MinutelyForecast,
@@ -8,7 +8,7 @@ import type {
   DailyForecast,
   Alert,
   WeatherTimezone,
-} from '@/types/weatherTypes';
+} from "@/types/weatherTypes";
 
 export type Weather = {
   current: CurrentWeather;
@@ -20,7 +20,7 @@ export type Weather = {
   timezone: WeatherTimezone;
 };
 
-export type WeatherUnitType = 'metric' | 'imperial';
+export type WeatherUnitType = "metric" | "imperial";
 
 export type WeatherStateParam = {
   lat?: number;

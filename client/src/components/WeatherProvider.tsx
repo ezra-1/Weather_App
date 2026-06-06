@@ -1,30 +1,23 @@
-import { APP, WEATHER_API } from '@/config/config';
-import { openWeatherApi } from '@/api/weatherApi';
+import { APP, WEATHER_API } from "@/config/config";
+import { openWeatherApi } from "@/api/weatherApi";
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 import {
   WeatherProviderContext,
   type Weather,
   type WeatherUnitType,
   type WeatherStateParam,
-} from '@/components/WeatherContext';
+} from "@/components/WeatherContext";
 
-import type {
-  Geocoding,
-  OneCallWeatherRes,
-} from '@/types/weatherTypes';
+import type { Geocoding, OneCallWeatherRes } from "@/types/weatherTypes";
 
-export const WeatherProvider = ({
-  children,
-}: React.PropsWithChildren) => {
+export const WeatherProvider = ({ children }: React.PropsWithChildren) => {
   const defaultLat =
-    Number(localStorage.getItem(APP.STORE_KEY.LAT)) ||
-    WEATHER_API.DEFAULTS.LAT;
+    Number(localStorage.getItem(APP.STORE_KEY.LAT)) || WEATHER_API.DEFAULTS.LAT;
 
   const defaultLon =
-    Number(localStorage.getItem(APP.STORE_KEY.LON)) ||
-    WEATHER_API.DEFAULTS.LON;
+    Number(localStorage.getItem(APP.STORE_KEY.LON)) || WEATHER_API.DEFAULTS.LON;
 
   const defaultUnit =
     (localStorage.getItem(APP.STORE_KEY.UNIT) as WeatherUnitType) ||
@@ -34,7 +27,7 @@ export const WeatherProvider = ({
 
   const oneCall = useCallback(
     async (lat: number, lon: number, units: WeatherUnitType) => {
-      const response = await openWeatherApi.get('/weather/onecall', {
+      const response = await openWeatherApi.get("/weather/onecall", {
         params: {
           lat,
           lon,
@@ -49,7 +42,7 @@ export const WeatherProvider = ({
 
   const reverseGeo = useCallback(
     async (lat: number, lon: number, limit = 1) => {
-      const response = await openWeatherApi.get('/weather/reversegeo', {
+      const response = await openWeatherApi.get("/weather/reversegeo", {
         params: {
           lat,
           lon,

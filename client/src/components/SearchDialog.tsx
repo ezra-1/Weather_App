@@ -75,15 +75,11 @@ export const SearchDialog = () => {
     };
 
     document.addEventListener("keydown", shortcut);
-    return () =>
-      document.removeEventListener("keydown", shortcut);
+    return () => document.removeEventListener("keydown", shortcut);
   }, []);
 
   return (
-    <Dialog
-      open={searchDialogOpen}
-      onOpenChange={setSearchDialogOpen}
-    >
+    <Dialog open={searchDialogOpen} onOpenChange={setSearchDialogOpen}>
       <DialogTrigger asChild>
         <Button
           variant="ghost"
@@ -113,9 +109,7 @@ export const SearchDialog = () => {
           <InputGroupInput
             placeholder="Search weather..."
             value={search}
-            onInput={(e) =>
-              setSearch(e.currentTarget.value)
-            }
+            onInput={(e) => setSearch(e.currentTarget.value)}
           />
           <InputGroupAddon>
             <SearchIcon />
@@ -124,61 +118,48 @@ export const SearchDialog = () => {
 
         <ItemGroup className="min-h-80 p-2">
           {!results.length && (
-            <p className="text-center text-sm py-4">
-              No results found!
-            </p>
+            <p className="text-center text-sm py-4">No results found!</p>
           )}
 
-          {results.map(
-            ({ name, lat, lon, state, country }) => (
-              <Item
-                key={`${name}-${lat}-${lon}`}
-                className="relative p-2"
-              >
-                <ItemContent>
-                  <ItemTitle>{name}</ItemTitle>
-                  <ItemDescription>
-                    {state ? `${state}, ` : ""}
-                    {country}
-                  </ItemDescription>
-                </ItemContent>
+          {results.map(({ name, lat, lon, state, country }) => (
+            <Item key={`${name}-${lat}-${lon}`} className="relative p-2">
+              <ItemContent>
+                <ItemTitle>{name}</ItemTitle>
+                <ItemDescription>
+                  {state ? `${state}, ` : ""}
+                  {country}
+                </ItemDescription>
+              </ItemContent>
 
-                <ItemActions>
-                  <DialogClose asChild>
-                    <Button
-                      variant="ghost"
-                      size="icon"
-                      onClick={() => {
-                        setWeather({ lat, lon });
+              <ItemActions>
+                <DialogClose asChild>
+                  <Button
+                    variant="ghost"
+                    size="icon"
+                    onClick={() => {
+                      setWeather({ lat, lon });
 
-                        localStorage.setItem(
-                          APP.STORE_KEY.LAT,
-                          lat.toString()
-                        );
+                      localStorage.setItem(APP.STORE_KEY.LAT, lat.toString());
 
-                        localStorage.setItem(
-                          APP.STORE_KEY.LON,
-                          lon.toString()
-                        );
-                      }}
-                    >
-                      <MapPinnedIcon />
-                    </Button>
-                  </DialogClose>
-
-                  <FavoriteButton
-                    location={{
-                      name,
-                      lat,
-                      lon,
-                      state,
-                      country,
+                      localStorage.setItem(APP.STORE_KEY.LON, lon.toString());
                     }}
-                  />
-                </ItemActions>
-              </Item>
-            )
-          )}
+                  >
+                    <MapPinnedIcon />
+                  </Button>
+                </DialogClose>
+
+                <FavoriteButton
+                  location={{
+                    name,
+                    lat,
+                    lon,
+                    state,
+                    country,
+                  }}
+                />
+              </ItemActions>
+            </Item>
+          ))}
         </ItemGroup>
       </DialogContent>
     </Dialog>

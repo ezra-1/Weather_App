@@ -1,9 +1,9 @@
-import { APP, WEATHER_API } from '@/config/config';
+import { APP, WEATHER_API } from "@/config/config";
 
-import { useEffect, useState } from 'react';
-import { useWeather } from '@/hooks/useWeather';
+import { useEffect, useState } from "react";
+import { useWeather } from "@/hooks/useWeather";
 
-import { Button } from '@/components/ui/button';
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuTrigger,
@@ -11,9 +11,9 @@ import {
   DropdownMenuRadioGroup,
   DropdownMenuLabel,
   DropdownMenuRadioItem,
-} from '@/components/ui/dropdown-menu';
+} from "@/components/ui/dropdown-menu";
 
-import type { WeatherUnitType } from '@/components/WeatherContext';
+import type { WeatherUnitType } from "@/components/WeatherContext";
 
 export const UnitDropdown = () => {
   // Hooks
@@ -22,7 +22,7 @@ export const UnitDropdown = () => {
   // States
   const [unit, setUnit] = useState<WeatherUnitType>(
     (localStorage.getItem(APP.STORE_KEY.UNIT) as WeatherUnitType) ||
-      WEATHER_API.DEFAULTS.UNIT,
+    WEATHER_API.DEFAULTS.UNIT,
   );
 
   useEffect(() => {
@@ -34,19 +34,13 @@ export const UnitDropdown = () => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button
-          variant='secondary'
-          size='icon'
-        >
-          °{unit === 'metric' ? 'C' : 'F'}
+        <Button variant="secondary" size="icon">
+          °{unit === "metric" ? "C" : "F"}
         </Button>
       </DropdownMenuTrigger>
 
-      <DropdownMenuContent
-        align='end'
-        className='w-[200px]'
-      >
-        <DropdownMenuLabel className='text-muted-foreground'>
+      <DropdownMenuContent align="end" className="w-[200px]">
+        <DropdownMenuLabel className="text-muted-foreground">
           Weather settings
         </DropdownMenuLabel>
 
@@ -54,11 +48,11 @@ export const UnitDropdown = () => {
           value={unit}
           onValueChange={(value) => setUnit(value as WeatherUnitType)}
         >
-          <DropdownMenuRadioItem value='metric'>
+          <DropdownMenuRadioItem value="metric">
             Metric (°C)
           </DropdownMenuRadioItem>
 
-          <DropdownMenuRadioItem value='imperial'>
+          <DropdownMenuRadioItem value="imperial">
             Imperial (°F)
           </DropdownMenuRadioItem>
         </DropdownMenuRadioGroup>
