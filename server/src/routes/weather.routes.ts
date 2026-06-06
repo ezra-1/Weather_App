@@ -1,8 +1,13 @@
 import { Router } from "express";
-import { searchLocations } from "../controllers/weather.controller";
+import {
+  geocodingController,
+  oneCallController,
+  reverseGeoController
+} from "../controllers/weather.controller";
 
 const router = Router();
-
-router.get("/", searchLocations);
+router.get("/", geocodingController);
+router.get("/onecall", oneCallController);
+router.get("/reversegeo", reverseGeoController);
 
 export default router;
