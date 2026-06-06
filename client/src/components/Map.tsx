@@ -41,7 +41,7 @@ export const Map = () => {
     );
 
     return () => map?.remove();
-  }, [theme, center]);
+  }, [theme, center, map]);
 
   return (
     <div
