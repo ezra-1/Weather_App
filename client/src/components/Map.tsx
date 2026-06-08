@@ -39,8 +39,6 @@ export const Map = () => {
         },
       }),
     );
-
-    return () => map?.remove();
   }, [theme, center]);
 
   return (
