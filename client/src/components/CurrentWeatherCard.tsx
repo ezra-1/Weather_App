@@ -54,8 +54,8 @@ export const CurrentWeatherCard = () => {
             <img
               src={`https://openweathermap.org/img/wn/${currentWeather.iconCode}@4x.png`}
               alt={currentWeather.description}
-              width={70}
-              height={70}
+              width={120}
+              height={120}
               className="object-contain"
             />
           </figure>
