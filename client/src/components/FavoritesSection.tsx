@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import type { Geocoding } from "@/types/weatherTypes";
+import { APP } from "@/config/config";
 
 import {
   getFavorites,
@@ -26,7 +27,7 @@ export const FavoritesSection = () => {
 
   if (!favorites.length) {
     return (
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 py-4">
         <h1 className="text-xl font-bold tracking-tight">Favorites</h1>
         <p className="text-sm text-muted-foreground">No favorites yet</p>
       </div>
@@ -34,10 +35,10 @@ export const FavoritesSection = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="container">
       <h1 className="text-xl font-bold tracking-tight">Favorites</h1>
-      <ScrollArea className="w-full pb-4">
-        <div className="flex gap-4 pt-4">
+      <ScrollArea className="w-full pb-2">
+        <div className="flex gap-2 pt-2">
           {favorites.map((f) => (
             <div
               key={`${f.lat}-${f.lon}`}
@@ -55,7 +56,12 @@ export const FavoritesSection = () => {
                 <Button
                   size="icon"
                   variant="ghost"
-                  onClick={() => setWeather({ lat: f.lat, lon: f.lon })}
+                  onClick={() => {
+                    setWeather({ lat: f.lat, lon: f.lon });
+
+                    localStorage.setItem(APP.STORE_KEY.LAT, f.lat.toString());
+                    localStorage.setItem(APP.STORE_KEY.LON, f.lon.toString());
+                  }}
                 >
                   <MapPinnedIcon className="" />
                 </Button>
