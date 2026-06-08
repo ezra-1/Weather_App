@@ -41,12 +41,12 @@ export const Map = () => {
     );
 
     return () => map?.remove();
-  }, [theme, center, map]);
+  }, [theme, center]);
 
   return (
     <div
       ref={mapContainerRef}
-      className="h-[300px] bg-card text-card-foreground rounded-xl border overflow-hidden shadow-sm"
+      className="bg-card text-card-foreground rounded-xl border overflow-hidden shadow-sm"
     >
       {map && <Marker map={map} coordinates={center} />}
     </div>
