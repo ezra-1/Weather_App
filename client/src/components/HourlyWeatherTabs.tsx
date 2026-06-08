@@ -1,89 +1,89 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/tabs';
-import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
-import { OverviewChart } from '@/components/OverviewChart';
-import { PrecipitationChart } from '@/components/PrecipitationChart';
-import { WindChart } from '@/components/WindChart';
-import { HumidityChart } from '@/components/HumidityChart';
-import { CloudCoverChart } from '@/components/CloudCoverChart';
-import { PressureChart } from '@/components/PressureChart';
-import { UvIndexChart } from '@/components/UvIndexChart';
-import { VisibilityChart } from '@/components/VisibilityChart';
-import { FeelsLikeChart } from '@/components/FeelsLikeChart';
+import { Tabs, TabsTrigger, TabsList, TabsContent } from "@/components/ui/tabs";
+import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
+import { OverviewChart } from "@/components/OverviewChart";
+import { PrecipitationChart } from "@/components/PrecipitationChart";
+import { WindChart } from "@/components/WindChart";
+import { HumidityChart } from "@/components/HumidityChart";
+import { CloudCoverChart } from "@/components/CloudCoverChart";
+import { PressureChart } from "@/components/PressureChart";
+import { UvIndexChart } from "@/components/UvIndexChart";
+import { VisibilityChart } from "@/components/VisibilityChart";
+import { FeelsLikeChart } from "@/components/FeelsLikeChart";
 
 type Tab =
-  | 'overview'
-  | 'precipitation'
-  | 'wind'
-  | 'humidity'
-  | 'cloudCover'
-  | 'pressure'
-  | 'uv'
-  | 'visibility'
-  | 'feelsLike';
+  | "overview"
+  | "precipitation"
+  | "wind"
+  | "humidity"
+  | "cloudCover"
+  | "pressure"
+  | "uv"
+  | "visibility"
+  | "feelsLike";
 
 const TABS_LIST = [
   {
-    title: 'Overview',
-    value: 'overview',
+    title: "Overview",
+    value: "overview",
   },
   {
-    title: 'Precipitation',
-    value: 'precipitation',
+    title: "Precipitation",
+    value: "precipitation",
   },
   {
-    title: 'Wind',
-    value: 'wind',
+    title: "Wind",
+    value: "wind",
   },
   {
-    title: 'Humidity',
-    value: 'humidity',
+    title: "Humidity",
+    value: "humidity",
   },
   {
-    title: 'Cloud cover',
-    value: 'cloudCover',
+    title: "Cloud cover",
+    value: "cloudCover",
   },
   {
-    title: 'Pressure',
-    value: 'pressure',
+    title: "Pressure",
+    value: "pressure",
   },
   {
-    title: 'UV',
-    value: 'uv',
+    title: "UV",
+    value: "uv",
   },
   {
-    title: 'Visibility',
-    value: 'visibility',
+    title: "Visibility",
+    value: "visibility",
   },
   {
-    title: 'Feels like',
-    value: 'feelsLike',
+    title: "Feels like",
+    value: "feelsLike",
   },
 ];
 
 export const HourlyWeatherTabs = () => {
   // States
-  const [tab, setTab] = useState<Tab>('overview');
+  const [tab, setTab] = useState<Tab>("overview");
 
   return (
     <Tabs
       value={tab}
       onValueChange={(value) => setTab(value as Tab)}
-      className='h-full gap-4'
+      className="h-full gap-4"
     >
-      <div className='flex items-center gap-4'>
-        <h2 className='text-lg font-semibold'>Hourly</h2>
+      <div className="flex items-center gap-4">
+        <h2 className="text-lg font-semibold">Hourly</h2>
 
         <TabsList
-          className='bg-background gap-2 overflow-x-auto overflow-y-hidden justify-start'
-          style={{ scrollbarWidth: 'none' }}
+          className="bg-background gap-2 overflow-x-auto overflow-y-hidden justify-start"
+          style={{ scrollbarWidth: "none" }}
         >
           {TABS_LIST.map((item) => (
             <TabsTrigger
               key={item.value}
               value={item.value}
-              className='border-none bg-secondary h-9 px-4 rounded-full data-[state=active]:bg-primary! data-[state=active]:text-background'
+              className="border-none bg-secondary h-9 px-4 rounded-full data-[state=active]:bg-primary! data-[state=active]:text-background"
             >
               {item.title}
             </TabsTrigger>
@@ -92,7 +92,7 @@ export const HourlyWeatherTabs = () => {
       </div>
 
       {/* Overview tab */}
-      <TabsContent value='overview'>
+      <TabsContent value="overview">
         <Card>
           <CardHeader>
             <CardTitle>Overview</CardTitle>
@@ -105,7 +105,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Precipitation tab */}
-      <TabsContent value='precipitation'>
+      <TabsContent value="precipitation">
         <Card>
           <CardHeader>
             <CardTitle>Precipitation</CardTitle>
@@ -118,7 +118,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Wind tab */}
-      <TabsContent value='wind'>
+      <TabsContent value="wind">
         <Card>
           <CardHeader>
             <CardTitle>Wind</CardTitle>
@@ -131,7 +131,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Humidity tab */}
-      <TabsContent value='humidity'>
+      <TabsContent value="humidity">
         <Card>
           <CardHeader>
             <CardTitle>Humidity</CardTitle>
@@ -144,7 +144,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Cloud cover tab */}
-      <TabsContent value='cloudCover'>
+      <TabsContent value="cloudCover">
         <Card>
           <CardHeader>
             <CardTitle>Cloud cover</CardTitle>
@@ -157,7 +157,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Pressure tab */}
-      <TabsContent value='pressure'>
+      <TabsContent value="pressure">
         <Card>
           <CardHeader>
             <CardTitle>Pressure</CardTitle>
@@ -170,7 +170,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Uvi Index tab */}
-      <TabsContent value='uv'>
+      <TabsContent value="uv">
         <Card>
           <CardHeader>
             <CardTitle>UV</CardTitle>
@@ -183,7 +183,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Visibility tab */}
-      <TabsContent value='visibility'>
+      <TabsContent value="visibility">
         <Card>
           <CardHeader>
             <CardTitle>Visibility</CardTitle>
@@ -196,7 +196,7 @@ export const HourlyWeatherTabs = () => {
       </TabsContent>
 
       {/* Feels like tab */}
-      <TabsContent value='feelsLike'>
+      <TabsContent value="feelsLike">
         <Card>
           <CardHeader>
             <CardTitle>Feels like</CardTitle>
