@@ -1,0 +1,212 @@
+import { useState } from 'react';
+
+import { Tabs, TabsTrigger, TabsList, TabsContent } from '@/components/ui/tabs';
+import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/card';
+import { OverviewChart } from '@/components/OverviewChart';
+import { PrecipitationChart } from '@/components/PrecipitationChart';
+import { WindChart } from '@/components/WindChart';
+import { HumidityChart } from '@/components/HumidityChart';
+import { CloudCoverChart } from '@/components/CloudCoverChart';
+import { PressureChart } from '@/components/PressureChart';
+import { UvIndexChart } from '@/components/UvIndexChart';
+import { VisibilityChart } from '@/components/VisibilityChart';
+import { FeelsLikeChart } from '@/components/FeelsLikeChart';
+
+type Tab =
+  | 'overview'
+  | 'precipitation'
+  | 'wind'
+  | 'humidity'
+  | 'cloudCover'
+  | 'pressure'
+  | 'uv'
+  | 'visibility'
+  | 'feelsLike';
+
+const TABS_LIST = [
+  {
+    title: 'Overview',
+    value: 'overview',
+  },
+  {
+    title: 'Precipitation',
+    value: 'precipitation',
+  },
+  {
+    title: 'Wind',
+    value: 'wind',
+  },
+  {
+    title: 'Humidity',
+    value: 'humidity',
+  },
+  {
+    title: 'Cloud cover',
+    value: 'cloudCover',
+  },
+  {
+    title: 'Pressure',
+    value: 'pressure',
+  },
+  {
+    title: 'UV',
+    value: 'uv',
+  },
+  {
+    title: 'Visibility',
+    value: 'visibility',
+  },
+  {
+    title: 'Feels like',
+    value: 'feelsLike',
+  },
+];
+
+export const HourlyWeatherTabs = () => {
+  // States
+  const [tab, setTab] = useState<Tab>('overview');
+
+  return (
+    <Tabs
+      value={tab}
+      onValueChange={(value) => setTab(value as Tab)}
+      className='h-full gap-4'
+    >
+      <div className='flex items-center gap-4'>
+        <h2 className='text-lg font-semibold'>Hourly</h2>
+
+        <TabsList
+          className='bg-background gap-2 overflow-x-auto overflow-y-hidden justify-start'
+          style={{ scrollbarWidth: 'none' }}
+        >
+          {TABS_LIST.map((item) => (
+            <TabsTrigger
+              key={item.value}
+              value={item.value}
+              className='border-none bg-secondary h-9 px-4 rounded-full data-[state=active]:bg-primary! data-[state=active]:text-background'
+            >
+              {item.title}
+            </TabsTrigger>
+          ))}
+        </TabsList>
+      </div>
+
+      {/* Overview tab */}
+      <TabsContent value='overview'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Overview</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <OverviewChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Precipitation tab */}
+      <TabsContent value='precipitation'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Precipitation</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <PrecipitationChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Wind tab */}
+      <TabsContent value='wind'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Wind</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <WindChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Humidity tab */}
+      <TabsContent value='humidity'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Humidity</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <HumidityChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Cloud cover tab */}
+      <TabsContent value='cloudCover'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Cloud cover</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <CloudCoverChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Pressure tab */}
+      <TabsContent value='pressure'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Pressure</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <PressureChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Uvi Index tab */}
+      <TabsContent value='uv'>
+        <Card>
+          <CardHeader>
+            <CardTitle>UV</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <UvIndexChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Visibility tab */}
+      <TabsContent value='visibility'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Visibility</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <VisibilityChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+
+      {/* Feels like tab */}
+      <TabsContent value='feelsLike'>
+        <Card>
+          <CardHeader>
+            <CardTitle>Feels like</CardTitle>
+          </CardHeader>
+
+          <CardContent>
+            <FeelsLikeChart />
+          </CardContent>
+        </Card>
+      </TabsContent>
+    </Tabs>
+  );
+};
